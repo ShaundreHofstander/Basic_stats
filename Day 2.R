@@ -273,7 +273,7 @@ sa_aov <- aov(minutes ~ time_type, data = sa_type)
 
 summary(sa_aov)
 
-# the results show that the p value (0.3) is greater than the significance level of 0.05
+# the results show that the p value (0.327) is greater than the significance level of 0.05
 # therefore there are no significant differences between just_now and now_now
 # thus accepting the null hypothesis
 
