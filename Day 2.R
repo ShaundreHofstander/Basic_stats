@@ -210,3 +210,72 @@ ggplot(data = sa_time, aes(y = now_now, x = just_now))+
    coord_equal(xlim = c(0, 60), ylim = c(0, 60))
 
 # End of Day 2
+
+
+
+
+
+
+
+# Bonus exercise ----------------------------------------------------------
+
+
+# ANOVA test hypotheses:
+# Null hypothesis: just_now and now_now are the same
+# Alternative hypothesis: just_now and now_now are different
+
+# Load our SA time data
+sa_time <- read_csv("SA_time.csv")
+
+# Load libraries
+library(tidyverse)
+library(dplyr)
+library(ggpubr)
+
+# Edit the data 
+sa_time <- sa_time %>% 
+  mutate(human = seq(1, n(), 1))
+
+sa_time <- sa_time %>% 
+  mutate(human = seq(1, n(), 1),
+         geo = c(rep(c("cape town", "george", "PE"), times = 6), 
+                 rep("joburg", 2)))
+
+sa_new <- select(sa_time, human, just_now, now_now)
+
+# Create long data
+sa_type <- sa_new %>%
+  gather(key = "time_type", value = "minutes", -human)
+
+levels = c("just_now", "now_now")
+
+levels(sa_type$time_type)
+
+
+sa_new <- sa_type %>%
+  group_by(time_type) %>%
+  summarise(count = n(),
+    mean = mean(minutes, na.rm = TRUE),
+    sd = sd(minutes, na.rm = TRUE))
+sa_new
+
+
+ggline(sa_type, x = "time_type", y = "minutes",
+       add = c("mean_se", "jitter"), 
+       order = c("just_now", "now_now"),
+       ylab = "Minutes", xlab = "Time type")
+
+# Compute the analysis of variance
+
+sa_aov <- aov(minutes ~ time_type, data = sa_type)
+
+# Summary of the analysis
+
+summary(sa_aov)
+
+# the results show that the p value (0.3) is greater than the significance level of 0.05
+# therefore there are no significant differences between just_now and now_now
+# thus accepting the null hypothesis
+
+# the end of exercise
+
