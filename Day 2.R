@@ -87,7 +87,6 @@ library(tidyverse)
 library(ggpubr)
 library(RColorBrewer)
 library(viridis) #independent to R, specialised colour palettes 
-library(viridisLite)
 
 # Load our SA time data
 sa_time <- read_csv("SA_time.csv")
@@ -104,7 +103,7 @@ sa_time <- sa_time %>%
 
 # Create long data
 sa_long <- sa_time %>%
-   gather(key = "time_type", value = "minutes", -human)
+   gather(key = "time_type", value = "minutes", -human, -geo)
 
 # Qualitative data --------------------------------------------------------
 
@@ -278,4 +277,3 @@ summary(sa_aov)
 # thus accepting the null hypothesis
 
 # the end of exercise
-
