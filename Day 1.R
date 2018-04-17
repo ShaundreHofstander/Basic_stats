@@ -5,7 +5,7 @@
 # To practice some of thr concepts that we will encounter
 
 
-# load packages\ ----------------------------------------------------------
+# load packages -----------------------------------------------------------
 
 library(tidyverse)
 
@@ -135,7 +135,7 @@ ggplot(data = filter(chicks, Time == 21),
 chicks %>%
   filter(Time == 21) %>% 
   group_by(Diet) %>% 
-  summarise((mean_wt = mean(weight),
+  summarise(mean_wt = mean(weight),
             median_wt = median(weight),
             skew_wt = skewness(weight))
 
@@ -151,8 +151,8 @@ chicks %>%
   group_by(Diet) %>% 
   summarise(mean_wt = mean(weight),
             median_wt = median(weight),
-            skew_wt = skewness,
-            kurtosis_wt = kurtosis(weight)
+            skew_wt = skewness(weight),
+            kurtosis_wt = kurtosis(weight))
 
 exp_r <- data.frame(dat =rexp(n = 500),
                     sample = "A")
@@ -177,3 +177,6 @@ wt_summary <- chicks %>%
             wt_quart1 = quantile(weight, 0.25),
             wt_quart2 = quantile(weight, 0.50),
             wt_quart3 = quantile(weight, 0.75))
+
+# visualise
+wt_summary
