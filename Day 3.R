@@ -189,7 +189,6 @@ t.test(value ~ sample, data = r_stuff, var.equal = TRUE, alternative = "less")
 
 
 
-
 # t test workflow ---------------------------------------------------------
 
 
