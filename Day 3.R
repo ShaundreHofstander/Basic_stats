@@ -193,7 +193,7 @@ t.test(value ~ sample, data = r_stuff, var.equal = TRUE, alternative = "less")
 
 
 # Load the data
-ecklonia <- read_csv("C:/Users/Shauny/Desktop/Intro_R_Workshop-master/data/ecklonia.csv") %>% 
+ecklonia <- read_csv("C:/Users/BCB User/Desktop/Intro_R_Workshop-master/data/ecklonia.csv") %>% 
   gather(key = "variable", value = "value", -species, -site, -ID)
 
 # Visualising the data
