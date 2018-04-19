@@ -230,3 +230,7 @@ compare_means(value ~ site, data = ecklonia_sub, method = "t.test", var.equal = 
 # results show that Ecklonia maxima is significantly greater at Batsata Rock than at 
 # Boulders Beach (p = 0, t = 6.5312, df = 24)
 
+
+# End of day 3 ------------------------------------------------------------
+
+
