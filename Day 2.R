@@ -112,11 +112,6 @@ sa_count <- sa_long %>%
   count(time_type) %>%  
   mutate(prop = n/sum(n))
 
-#stacked bar graphs 
-ggplot(data = sa_long, aes(x = "", y = time_type))+
-  geom_bar()
-
-
 #stacked bar graphs
 ggplot(data = sa_count, aes(x = "", y = n, fill = time_type)) +
   geom_bar(width = 1, stat = "identity") +
