@@ -155,6 +155,7 @@ ggplot(data = filter(r_one),
 # and write a one sentence conclusion for it. Provide all of the code used to accomplish this.
 
 # Hypothesis: dog mean is less cat mean
+# RWS: It will be helpful in the long-run to write out your hypotheses fully i this exercises
 
 # Load libraries
 library(tidyverse)
@@ -168,9 +169,6 @@ r_stuff <- data.frame(value = c(rnorm(n = 1000, mean = 12, sd = 5),
 
 # Check assumptions
 
-shapiro.test(r_stuff$value)
-
-
 # summarise and check variance
 r_stuff %>% 
   group_by(sample) %>% 
@@ -180,10 +178,10 @@ r_stuff %>%
 # two sample t-test -------------------------------------------------------
 
 t.test(value ~ sample, data = r_stuff, var.equal = TRUE, alternative = "less")
-
+# RWS: Here you are testing if the cat mean is below the dog mean...
 
 # Conclusion: The p value is < 2.2e-16, df = 1998, t = -10.963, thus the null hypothesis is not rejected.
-
+# RWS: If p < 0.05 we reject the null hypothesis
 
 
 
@@ -229,7 +227,7 @@ compare_means(value ~ site, data = ecklonia_sub, method = "t.test", var.equal = 
 
 # results show that Ecklonia maxima is significantly greater at Batsata Rock than at 
 # Boulders Beach (p = 0, t = 6.5312, df = 24)
-
+# RWS: Which property of Ecklonia maxima is greater? Be more precise in your writing.
 
 # End of Day 3 ------------------------------------------------------------
 
