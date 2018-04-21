@@ -16,7 +16,6 @@ snakes <- read_csv("C:/Users/BCB User/Desktop/Intro_R_Workshop-master/Basic_stat
 snakes <- read_csv("C:/Users/BCB User/Desktop/Intro_R_Workshop-master/Basic_stats/snakes.csv")
 snakes$day = as.factor(snakes$day)
 
-
 # Summarise the data -----------------------------------------------------
 
 snakes_summary <- snakes %>%
@@ -260,3 +259,30 @@ ecklonia_pearson
 
 corrplot(ecklonia_cor, method = "circle")
 # the size of do shows the strength of the correlation
+
+
+
+
+# Extra Exercise ----------------------------------------------------------
+
+
+# Load data
+ecklonia <- read_csv("G:/Intro_R_Workshop-master/data/ecklonia.csv")
+
+# Select only the necessary columns
+ecklonia_sub <- ecklonia %>% select(frond_length:epiphyte_length)
+
+# pearson
+ecklonia_pearson <- cor(ecklonia_sub)
+
+# pallete
+ecklonia_colour <- colorRampPalette(c("blue", "green", "orange"))(n = 299) 
+
+# Create heatmap
+ecklonia_heat <- heatmap(ecklonia_pearson, Rowv = NA, Colv = NA,
+                         col = ecklonia_colour, scale = "column",
+                         margins = c(11, 8))
+
+
+# How to create a data matrix in general
+# ecklonia_new <- data.matrix(ecklonia_pearson)
