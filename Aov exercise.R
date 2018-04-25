@@ -131,3 +131,4 @@ ggplot(data = bacon, aes(x = as.numeric(feed),
   geom_line(size = 1.5) +
   geom_point(size = 2)
 
+# End of exercise
