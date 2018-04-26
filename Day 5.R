@@ -5,7 +5,7 @@
 
 # load libraries
 library(tidyverse)
-library(Rmisc)
+# library(Rmisc) # Unfortunately this overrides many dplyr functions
 
 # Load data
 
@@ -37,7 +37,7 @@ snakes_summary <- snakes %>%
 # Test a hypothesis -------------------------------------------------------
 
 # First calculate SE and CI
-snakes.summary2 <- summarySE(data = snakes,
+snakes.summary2 <- Rmisc::summarySE(data = snakes,
                              measurevar = "openings",
                              groupvars = c("day"))
 
@@ -120,11 +120,11 @@ moth_trap_summary <- moths %>%
 
 #  Calculate SE & CI ------------------------------------------------------
 
-moth_loc_summary_2 <- summarySE(data = moths,
+moth_loc_summary_2 <- Rmisc::summarySE(data = moths,
                                 measurevar = "count",
                                 groupvars = c("Location"))
 
-moth_trap_summary_2 <- summarySE(data = moths,
+moth_trap_summary_2 <- Rmisc::summarySE(data = moths,
                                  measurevar = "count",
                                  groupvars = c("trap"))
 
